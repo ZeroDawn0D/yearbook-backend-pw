@@ -1,3 +1,5 @@
+import pymongo;
+
 inputfile = open('input.txt','r');
 inputs = inputfile.readlines();
 sec = inputs[0];
@@ -15,8 +17,21 @@ print("fav: "+ fav);
 print("colour: "+ colour);
 print("imgur: "+ imgur);
 
-passtr = open('pass.txt','r').read();
+doc = {
+	"name": name,
+	"roll": roll,
+	"quote": quote,
+	"fav": fav,
+	"colour": colour,
+	"imgur": imgur
+}
 
-link = "mongodb+srv://umang1126:" + passtr +"@slsyearbook.s4jdg.mongodb.net/class12?retryWrites=true&w=majority"
+
+passtr = open('pass.txt','r').read();
+link = "mongodb+srv://umang1126:" + passtr +"@slsyearbook.s4jdg.mongodb.net/class12"
 client = pymongo.MongoClient(link)
-db = client.test
+db = client.class12;
+col = db[sec];
+
+col.insert_one(doc);
+
