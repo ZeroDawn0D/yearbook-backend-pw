@@ -13,7 +13,7 @@ app = Flask(__name__) # main if this file is directly run, app otherwise
 
 @app.route("/", methods = ['GET'])
 def hello():
-		return "Welcome to Python Flask!"
+		return "testing"
 
 #sec name roll quote fav colour imgur
 #
@@ -24,4 +24,19 @@ def get_data(sec, roll, param):
 	data = col.find_one({"roll": roll})
 	ans = data[param]
 	str = str + ans
+	return ans
+
+@app.route("/<sec>", methods = ['GET'])
+def get_roll(sec):
+	col = db[sec]
+	datalist = col.find({})
+	rollarray = [];
+	for obj in datalist:
+		rollarray.append(int(obj["roll"]))
+
+	rollarray.sort()
+	str = ""
+	for i in rollarray:
+		str = str + str(i) + " "
+	str = str[:-1]
 	return str
