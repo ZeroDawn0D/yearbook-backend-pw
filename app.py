@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 import pymongo
 
 passtr = open('pass.txt','r').read();
@@ -9,7 +10,7 @@ db = client.class12;
 
 
 app = Flask(__name__) # main if this file is directly run, app otherwise
-
+CORS(app) #magic idk
 
 @app.route("/", methods = ['GET'])
 def hello():
