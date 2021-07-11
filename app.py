@@ -35,11 +35,11 @@ def get_roll(sec):
 		rollarray.append(int(obj["roll"]))
 
 	rollarray.sort()
-	str = ""
+	st = ""
 	for i in rollarray:
-		str = str + str(i) + " "
-	str = str[:-1]
-	return str
+		st = st + str(i) + " "
+	st = st[:-1]
+	return st
 
 if __name__ == "__main__":
 	app.run()
