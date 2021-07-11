@@ -40,3 +40,6 @@ def get_roll(sec):
 		str = str + str(i) + " "
 	str = str[:-1]
 	return str
+
+if __name__ == "__main__":
+	app.run()
