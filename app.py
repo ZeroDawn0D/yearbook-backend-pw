@@ -4,7 +4,7 @@ import pymongo
 
 passtr = open('pass.txt','r').read();
 link = "mongodb+srv://umang1126:" + passtr +"@slsyearbook.s4jdg.mongodb.net/class12?retryWrites=true&w=majority"
-client = pymongo.MongoClient(link)
+client = pymongo.MongoClient(link, tlsAllowInvalidCertificates=True)
 
 db = client.class12;
 
